@@ -3,7 +3,6 @@ import {
   Flex,
   Heading,
   HStack,
-  Link,
   Stack,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
@@ -58,7 +57,6 @@ export default function Cart() {
           <Heading fontSize="2xl" fontWeight="extrabold">
             Shopping Cart ({products.length} items)
           </Heading>
-
           <Stack spacing="6">
             {products.map((product) => (
               <CartItem key={product.id} product={product} />

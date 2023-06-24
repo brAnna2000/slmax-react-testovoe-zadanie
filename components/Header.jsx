@@ -13,7 +13,6 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
-import { FaGithub } from "react-icons/fa";
 import NextLink from "next/link";
 import { BsCartCheck } from "react-icons/bs";
 import { useSelector } from "react-redux";
@@ -93,7 +92,7 @@ export const Header = () => {
                 fontSize={["md", "lg", "xl"]}
                 color={useColorModeValue("blue.600", "blue.200")}
               >
-                Redux Shopping
+                Shopping
               </Text>
             </HStack>
             <HStack
@@ -109,16 +108,18 @@ export const Header = () => {
             </HStack>
           </HStack>
           <Flex alignItems={"center"} padding={4} mr={12}>
-            <Button
-              variant={"outline"}
-              colorScheme={"blue"}
-              size={"md"}
-              mr={4}
-              leftIcon={<BsCartCheck />}
-              display={{ base: "none", md: "flex" }}
-            >
-              Items in Cart: {items.length}
-            </Button>
+            <NextLink href="/cart" passHref>
+              <Button
+                variant={"outline"}
+                colorScheme={"blue"}
+                size={"md"}
+                mr={4}
+                leftIcon={<BsCartCheck />}
+                display={{ base: "none", md: "flex" }}
+              >
+                Cart: {items.length}
+              </Button>
+            </NextLink>
             <IconButton
               size={"lg"}
               variant={"ghost"}
@@ -133,17 +134,10 @@ export const Header = () => {
                 )
               }
             />
-            <IconButton
-              as="a"
-              href="https://github.com/abhijhacodes/next-redux-shopping-cart"
-              aria-label="GitHub"
-              icon={<FaGithub fontSize="1.8rem" />}
-            />
           </Flex>
         </Flex>
-
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
+          <Box pb={4} display={{ md: "none" }} mt={16}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
                 <NextLink href={link.href} key={link.label} passHref>
